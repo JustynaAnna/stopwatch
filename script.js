@@ -13,6 +13,7 @@ const closeModalBtn = document.querySelector(".close");
 
 let countTime;
 let counter = 0;
+let timesArray = [];
 
 const handleStart = () => {
   clearInterval(countTime); // Jesli kliknę ponownie na start to interwał nie zgupieje, a zacznie liczyc od nowa anulując poprzedni start.
@@ -22,32 +23,37 @@ const handleStart = () => {
     const seconds = counter % 60;
     const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     stopwatch.textContent = formattedTime;
-  }, 1000);
+  }, 100);
 };
 
 const handlePause = () => {
   clearInterval(countTime);
 };
+
+const handleStop = () => {
+  time.innerHTML = `previous time: ${stopwatch.textContent} `;
+
+  if (stopwatch.textContent !== "0:00") {
+    time.style.visibility = "visible";
+    timesArray.push(stopwatch.textContent);
+    console.log(timesArray);
+  }
+  clearTimerData();
+};
+
+const handleReset = () => {
+  time.style.visibility = "hidden";
+  timesArray = [];
+  clearTimerData();
+};
+
+const clearTimerData = () => {
+  clearInterval(countTime);
+  counter = 0;
+  stopwatch.textContent = "0:00";
+};
+
 startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
-
-// const handleStart = () => {
-//   clearInterval(countTime);
-//   countTime = setInterval(() => {
-//     if (seconds < 9) {
-//       seconds++;
-//       console.log(seconds);
-//       stopwatch.textContent = `${minutes}:0${seconds}`;
-//     } else if (seconds >= 9 && seconds < 59) {
-//       seconds++;
-//       console.log("else if" + seconds);
-//       stopwatch.textContent = `${minutes}:${seconds}`;
-//     } else {
-//       minutes++;
-//       console.log(minutes + "else");
-//       seconds = 0;
-//       stopwatch.textContent = `${minutes}:00`;
-//     }
-//   }, 1000);
-// };
-// startBtn.addEventListener("click", handleStart);
+stopBtn.addEventListener("click", handleStop);
+resetBtn.addEventListener("click", handleReset);
