@@ -19,11 +19,8 @@ const handleStart = () => {
   clearInterval(countTime); // Jesli kliknę ponownie na start to interwał nie zgupieje, a zacznie liczyc od nowa anulując poprzedni start.
   countTime = setInterval(() => {
     counter++;
-    const minutes = Math.floor(counter / 60);
-    const seconds = counter % 60;
-    const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-    stopwatch.textContent = formattedTime;
-  }, 100);
+    updateStopwatch(counter);
+  }, 1000);
 };
 
 const handlePause = () => {
@@ -45,6 +42,12 @@ const handleReset = () => {
   time.style.visibility = "hidden";
   timesArray = [];
   clearTimerData();
+};
+const updateStopwatch = (counter) => {
+  const minutes = Math.floor(counter / 60);
+  const seconds = counter % 60;
+  const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  stopwatch.textContent = formattedTime;
 };
 
 const clearTimerData = () => {
