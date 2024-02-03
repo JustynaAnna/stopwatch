@@ -54,9 +54,36 @@ const clearTimerData = () => {
   clearInterval(countTime);
   counter = 0;
   stopwatch.textContent = "0:00";
+  timeList.textContent = "";
+};
+
+const showHistory = () => {
+  timeList.textContent = "";
+
+  timesArray.forEach((time, index) => {
+    const newTime = document.createElement("li");
+    newTime.innerHTML = `Measurement ${index + 1}:<span>${time}</span>`;
+
+    console.log(newTime);
+    timeList.appendChild(newTime);
+  });
+};
+
+const showModal = () => {
+  modalShadow.style.display =
+    modalShadow.style.display === "block" ? "none" : "block";
+  modalShadow.classList.toggle("modal-animations");
 };
 
 startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);
 resetBtn.addEventListener("click", handleReset);
+historyBtn.addEventListener("click", showHistory);
+infoBtn.addEventListener("click", showModal);
+closeModalBtn.addEventListener("click", showModal);
+window.addEventListener("click", (e) => {
+  if (e.target === modalShadow) {
+    showModal();
+  }
+});
