@@ -7,13 +7,21 @@ const stopwatch = document.querySelector(".stopwatch");
 const time = document.querySelector(".time");
 const timeList = document.querySelector(".time-list");
 
-const infoBtn = document.querySelector(".info");
+const infoBtn = document.querySelector(".fa-question");
 const modalShadow = document.querySelector(".modal-shadow");
 const closeModalBtn = document.querySelector(".close");
 
 let countTime;
 let counter = 0;
 let timesArray = [];
+
+//colors
+const colorBtn = document.querySelector(".fa-paint-brush");
+const colorPanel = document.querySelector(".colors");
+const colorOne = document.querySelector(".one");
+const colorTwo = document.querySelector(".two");
+const colorThree = document.querySelector(".three");
+let root = document.documentElement;
 
 const handleStart = () => {
   clearInterval(countTime); // Jesli kliknę ponownie na start to interwał nie zgupieje, a zacznie liczyc od nowa anulując poprzedni start.
@@ -62,7 +70,7 @@ const showHistory = () => {
 
   timesArray.forEach((time, index) => {
     const newTime = document.createElement("li");
-    newTime.innerHTML = `Measurement ${index + 1}:<span>${time}</span>`;
+    newTime.innerHTML = `#${index + 1}:<span>${time}</span>`;
 
     console.log(newTime);
     timeList.appendChild(newTime);
@@ -86,4 +94,21 @@ window.addEventListener("click", (e) => {
   if (e.target === modalShadow) {
     showModal();
   }
+});
+
+colorBtn.addEventListener("click", () => {
+  colorPanel.classList.toggle("show-colors");
+});
+
+colorOne.addEventListener("click", () => {
+  root.style.setProperty("--first-color", "rgb(250, 20, 6)");
+  root.style.setProperty("--hover-color", "rgb(209, 33, 24)");
+});
+colorTwo.addEventListener("click", () => {
+  root.style.setProperty("--first-color", "rgb(6, 173, 250)");
+  root.style.setProperty("--hover-color", "rgb(28, 145, 199)");
+});
+colorThree.addEventListener("click", () => {
+  root.style.setProperty("--first-color", "rgb(0, 255, 42)");
+  root.style.setProperty("--hover-color", "rgb(28, 209, 58)");
 });
