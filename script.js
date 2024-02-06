@@ -32,13 +32,17 @@ const handleStart = () => {
 };
 
 const handlePause = () => {
-  clearInterval(countTime);
+  if (countTime) {
+    // Sprawdzam, czy stoper jest uruchomiony przed kliknieciem pauzy
+    clearInterval(countTime);
+    console.log(" im in pause");
+  }
 };
 
 const handleStop = () => {
   time.innerHTML = `previous time: ${stopwatch.textContent} `;
 
-  if (stopwatch.textContent !== "0:00") {
+  if (stopwatch.textContent !== "00:00:00") {
     time.style.visibility = "visible";
     timesArray.push(stopwatch.textContent);
     console.log(timesArray);
@@ -51,18 +55,26 @@ const handleReset = () => {
   timesArray = [];
   clearTimerData();
 };
+
 const updateStopwatch = (counter) => {
-  const minutes = Math.floor(counter / 60);
+  const hours = Math.floor(counter / 3600);
+  const minutes = Math.floor((counter % 3600) / 60);
   const seconds = counter % 60;
-  const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+  const formattedHours = String(hours).padStart(2, "0");
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(seconds).padStart(2, "0");
+
+  const formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
   stopwatch.textContent = formattedTime;
 };
 
 const clearTimerData = () => {
   clearInterval(countTime);
   counter = 0;
-  stopwatch.textContent = "0:00";
+  stopwatch.textContent = "00:00:00";
   timeList.textContent = "";
+  countTime = null; //Jak kliknę start, póżniej stop, a później na pauze to przycisk nie zadziała bo warunek if (countTime)jest false
 };
 
 const showHistory = () => {
