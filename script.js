@@ -6,6 +6,7 @@ const historyBtn = document.querySelector(".history");
 const stopwatch = document.querySelector(".stopwatch");
 const time = document.querySelector(".time");
 const timeList = document.querySelector(".time-list");
+const clearHistoryBtn = document.querySelector(".clear-history");
 
 const infoBtn = document.querySelector(".fa-question");
 const modalShadow = document.querySelector(".modal-shadow");
@@ -14,6 +15,7 @@ const closeModalBtn = document.querySelector(".close");
 let countTime;
 let counter = 0;
 let timesArray = [];
+let isHistoryVisible = false;
 
 //colors
 const colorBtn = document.querySelector(".fa-paint-brush");
@@ -32,49 +34,83 @@ const handleStart = () => {
 };
 
 const handlePause = () => {
-  clearInterval(countTime);
+  if (countTime) {
+    // Sprawdzam, czy stoper jest uruchomiony przed kliknieciem pauzy
+    clearInterval(countTime);
+    console.log(" im in pause!");
+  }
 };
 
 const handleStop = () => {
   time.innerHTML = `previous time: ${stopwatch.textContent} `;
 
-  if (stopwatch.textContent !== "0:00") {
+  if (stopwatch.textContent !== "00:00:00") {
     time.style.visibility = "visible";
     timesArray.push(stopwatch.textContent);
-    console.log(timesArray);
   }
   clearTimerData();
+  if (isHistoryVisible) {
+    showHistory();
+  }
 };
 
 const handleReset = () => {
   time.style.visibility = "hidden";
-  timesArray = [];
   clearTimerData();
 };
+
+const handleClearHistory = () => {
+  timeList.textContent = "";
+  timesArray = []; //Ustawiam na pustą tablicę inaczej po uruchomieniu stopera i kliknieciu na historie dalej mam stare zapisy
+  // clearHistoryBtn.style.display = "none"; PRZEMYSL TO
+  clearHistoryBtn.style.display = "none";
+};
+
 const updateStopwatch = (counter) => {
-  const minutes = Math.floor(counter / 60);
+  const hours = Math.floor(counter / 3600);
+  const minutes = Math.floor((counter % 3600) / 60);
   const seconds = counter % 60;
-  const formattedTime = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+  const formattedHours = String(hours).padStart(2, "0");
+  const formattedMinutes = String(minutes).padStart(2, "0");
+  const formattedSeconds = String(seconds).padStart(2, "0");
+
+  const formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
   stopwatch.textContent = formattedTime;
 };
 
 const clearTimerData = () => {
   clearInterval(countTime);
   counter = 0;
-  stopwatch.textContent = "0:00";
-  timeList.textContent = "";
+  stopwatch.textContent = "00:00:00";
+  // timeList.textContent = "";
+  countTime = null; //Jak kliknę start, póżniej stop, a później na pauze to przycisk nie zadziała bo warunek if (countTime)jest false
 };
 
 const showHistory = () => {
   timeList.textContent = "";
+  clearHistoryBtn.style.display = "block";
 
   timesArray.forEach((time, index) => {
     const newTime = document.createElement("li");
     newTime.innerHTML = `#${index + 1}:<span>${time}</span>`;
-
-    console.log(newTime);
     timeList.appendChild(newTime);
   });
+};
+
+const hideHistory = () => {
+  timeList.textContent = "";
+  clearHistoryBtn.style.display = "none";
+};
+
+const toggleHistory = () => {
+  if (!isHistoryVisible) {
+    showHistory();
+    isHistoryVisible = true;
+  } else {
+    hideHistory();
+    isHistoryVisible = false;
+  }
 };
 
 const showModal = () => {
@@ -87,7 +123,8 @@ startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);
 resetBtn.addEventListener("click", handleReset);
-historyBtn.addEventListener("click", showHistory);
+historyBtn.addEventListener("click", toggleHistory);
+clearHistoryBtn.addEventListener("click", handleClearHistory);
 infoBtn.addEventListener("click", showModal);
 closeModalBtn.addEventListener("click", showModal);
 window.addEventListener("click", (e) => {
