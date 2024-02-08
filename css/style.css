@@ -117,6 +117,10 @@ button:focus {
   font-weight: bold;
 }
 
+.clear-history {
+  display: none;
+}
+
 .modal-shadow {
   display: none;
   position: absolute;
