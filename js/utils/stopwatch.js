@@ -1,5 +1,9 @@
-import { isHistoryVisible, showHistory, timesArray } from "./history.js";
-import { stopwatch, time } from "./stopwatchModule.js";
+import {
+  isHistoryVisible,
+  showHistory,
+  timesArray,
+} from "../modules/history.js";
+import { stopwatch, time } from "../modules/stopwatchModule.js";
 
 let countTime;
 let counter = 0;

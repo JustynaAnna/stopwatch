@@ -1,11 +1,15 @@
-import { setFirstColor, setSecondColor, setThirdColor } from "./colors.js";
+import {
+  setFirstColor,
+  setSecondColor,
+  setThirdColor,
+} from "./utils/colors.js";
 import {
   colorBtn,
   colorOne,
   colorPanel,
   colorThree,
   colorTwo,
-} from "./colorsModule.js";
+} from "./modules/colorsModule.js";
 import {
   clearHistoryBtn,
   closeModalBtn,
@@ -16,18 +20,21 @@ import {
   resetBtn,
   startBtn,
   stopBtn,
-} from "./buttonsModule.js";
+} from "./modules/buttonsModule.js";
 
-import { handleClearHistory, toggleHistoryVisibility } from "./history.js";
+import {
+  handleClearHistory,
+  toggleHistoryVisibility,
+} from "./modules/history.js";
 
-import { showModal } from "./modal.js";
+import { showModal } from "./utils/modal.js";
 
 import {
   handlePause,
   handleReset,
   handleStart,
   handleStop,
-} from "./stopwatch.js";
+} from "./utils/stopwatch.js";
 
 startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);

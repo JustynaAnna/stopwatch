@@ -1,4 +1,4 @@
-import { root } from "./colorsModule.js";
+import { root } from "../modules/colorsModule.js";
 
 // Functions handling UI color changes.
 export const setFirstColor = () => {
