@@ -1,4 +1,5 @@
-import { clearHistoryBtn, timeList } from "./domElements.js";
+import { clearHistoryBtn } from "./buttonsModule.js";
+import { timeList } from "./stopwatchModule.js";
 
 export let timesArray = [];
 export let isHistoryVisible = false;
@@ -19,7 +20,8 @@ export const hideHistory = () => {
   clearHistoryBtn.style.display = "none";
 };
 
-export const toggleHistory = () => {
+// Toggles the visibility of the time measurement history.
+export const toggleHistoryVisibility = () => {
   if (!isHistoryVisible) {
     showHistory();
     isHistoryVisible = true;

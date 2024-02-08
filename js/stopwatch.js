@@ -1,19 +1,53 @@
-import { stopwatch, time } from "./domElements.js";
 import { isHistoryVisible, showHistory, timesArray } from "./history.js";
+import { stopwatch, time } from "./stopwatchModule.js";
 
 let countTime;
 let counter = 0;
 
-const updateStopwatch = (counter) => {
+// Functions handling stopwatch operations.
+// Updates the stopwatch display.
+
+// tę funkcję updateStopwatchDisplay powinnaś rozbić na mniejsze funkcje; Większa elastyczność to pozwoli wykorzystać funkcje na nowo
+// const updateStopwatchDisplay = (counter) => {
+//   const hours = Math.floor(counter / 3600);
+//   const minutes = Math.floor((counter % 3600) / 60);
+//   const seconds = counter % 60;
+
+//   const formattedHours = String(hours).padStart(2, "0");
+//   const formattedMinutes = String(minutes).padStart(2, "0");
+//   const formattedSeconds = String(seconds).padStart(2, "0");
+
+//   const formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+//   stopwatch.textContent = formattedTime;
+// };
+
+//Zmieniony kod z updateStopwatchDisplay
+
+// Function to format individual time components (hours, minutes, seconds) with leading zeros if needed.
+const formatTimeComponent = (timeComponent) => {
+  return String(timeComponent).padStart(2, "0");
+};
+
+// Function to format the time based on the counter value.
+const formatTime = (counter) => {
+  // Calculate hours, minutes, and seconds from the counter value.
   const hours = Math.floor(counter / 3600);
   const minutes = Math.floor((counter % 3600) / 60);
   const seconds = counter % 60;
 
-  const formattedHours = String(hours).padStart(2, "0");
-  const formattedMinutes = String(minutes).padStart(2, "0");
-  const formattedSeconds = String(seconds).padStart(2, "0");
+  // Format each time component using the formatTimeComponent function.
+  const formattedHours = formatTimeComponent(hours);
+  const formattedMinutes = formatTimeComponent(minutes);
+  const formattedSeconds = formatTimeComponent(seconds);
 
-  const formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+  // Return the formatted time string in the format hh:mm:ss.
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+};
+
+// Function to update the stopwatch display with the formatted time.
+const updateStopwatch = (counter) => {
+  // Format the time based on the counter value.
+  const formattedTime = formatTime(counter);
   stopwatch.textContent = formattedTime;
 };
 

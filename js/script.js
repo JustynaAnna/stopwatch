@@ -1,12 +1,14 @@
-import { handleColorOne, handleColorThree, handleColorTwo } from "./colors.js";
+import { setFirstColor, setSecondColor, setThirdColor } from "./colors.js";
 import {
-  clearHistoryBtn,
-  closeModalBtn,
   colorBtn,
   colorOne,
   colorPanel,
   colorThree,
   colorTwo,
+} from "./colorsModule.js";
+import {
+  clearHistoryBtn,
+  closeModalBtn,
   historyBtn,
   infoBtn,
   modalShadow,
@@ -14,9 +16,12 @@ import {
   resetBtn,
   startBtn,
   stopBtn,
-} from "./domElements.js";
-import { handleClearHistory, toggleHistory } from "./history.js";
+} from "./buttonsModule.js";
+
+import { handleClearHistory, toggleHistoryVisibility } from "./history.js";
+
 import { showModal } from "./modal.js";
+
 import {
   handlePause,
   handleReset,
@@ -28,7 +33,7 @@ startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);
 resetBtn.addEventListener("click", handleReset);
-historyBtn.addEventListener("click", toggleHistory);
+historyBtn.addEventListener("click", toggleHistoryVisibility);
 clearHistoryBtn.addEventListener("click", handleClearHistory);
 infoBtn.addEventListener("click", showModal);
 closeModalBtn.addEventListener("click", showModal);
@@ -42,6 +47,6 @@ colorBtn.addEventListener("click", () => {
   colorPanel.classList.toggle("show-colors");
 });
 
-colorOne.addEventListener("click", handleColorOne);
-colorTwo.addEventListener("click", handleColorTwo);
-colorThree.addEventListener("click", handleColorThree);
+colorOne.addEventListener("click", setFirstColor);
+colorTwo.addEventListener("click", setSecondColor);
+colorThree.addEventListener("click", setThirdColor);

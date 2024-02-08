@@ -1,4 +1,4 @@
-import { modalShadow } from "./domElements.js";
+import { modalShadow } from "./buttonsModule.js";
 
 export const showModal = () => {
   modalShadow.style.display =
