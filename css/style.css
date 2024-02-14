@@ -1,173 +1,111 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --first-color: rgb(250, 20, 6);
-  --second-color: rgb(190, 210, 197);
-  --hover-color: rgb(209, 33, 24);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: "Montserrat", sans-serif;
-  background-color: #333;
+  @apply flex justify-center items-center flex-col min-h-screen bg-[#333];
 }
 
 .wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 50px;
-  width: 800px;
+  @apply relative flex justify-center items-center flex-col p-[50px] w-[800px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-lg text-white overflow-hidden;
   background: radial-gradient(circle, rgb(43, 44, 46) 0%, rgb(25, 25, 25) 93%);
-  border-radius: 8px;
   box-shadow: 5px 5px 10px black;
-  color: #fff;
-  overflow: hidden;
 }
 
 .info i {
-  font-size: 24px;
-  position: absolute;
-  top: 6px;
-  padding: 20px;
-  color: var(--second-color);
-  cursor: pointer;
-  transition: color 0.3s;
+  @apply text-2xl absolute top-[0.375rem] p-[1.25rem] text-[#bed2c5] cursor-pointer transition-colors duration-300;
 }
 
 .info .fa-question {
-  right: 14px;
+  @apply right-[0.875rem];
 }
 
 .info .fa-paint-brush {
-  right: 60px;
+  @apply right-16;
 }
 
-.info i:hover {
-  color: var(--first-color);
+.info i {
+  @apply hover:text-[#fa1406];
 }
 
 h1 {
-  margin-bottom: 20px;
-  font-size: 60px;
-  font-weight: lighter;
+  @apply mb-5 text-6xl font-light;
 }
 
 .stopwatch {
-  font-size: 72px;
-  color: var(--first-color);
+  @apply text-7xl text-[#fa1406];
 }
+/* .time {
+  visibility: hidden;  */
+/* DLA JS JAK TIME NIE BEDZIE DZIAŁAŁO SPRAWDZ CZY TOGGLE DZIAŁA Z  tilwind invisible*/
 
 .time {
-  visibility: hidden;
-  color: var(--second-color);
-  font-size: 22px;
+  @apply invisible text-[#bed2c5] text-[22px];
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: 30px;
+  @apply flex justify-around flex-wrap m-8;
 }
 
 button {
-  margin: 10px;
-  padding: 10px 20px;
-  width: 20%;
-  color: #fff;
-  font-size: 22px;
-  background-color: transparent;
-  border: 1px solid var(--first-color);
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  @apply m-3 py-3 px-6 w-1/5 text-white text-2xl bg-transparent border border-solid border-red-600 rounded-md cursor-pointer transition-colors duration-300 hover:bg-red-600 focus:bg-red-600 focus:outline-none hover:outline-none;
 }
 
 .history {
-  flex-grow: 1;
-  text-transform: uppercase;
-}
-
-button:hover,
-button:focus {
-  background-color: var(--first-color);
-  outline: none;
+  @apply flex-grow uppercase;
 }
 
 .time-list li {
-  display: flex;
-  justify-content: space-between;
-  width: 300px;
-  font-size: 22px;
-  color: var(--second-color);
+  @apply flex justify-between w-[300px] text-2xl text-[#bed2c5];
 }
 
 .time-list span {
-  font-weight: bold;
+  @apply font-bold;
 }
 
 .clear-history {
-  display: none;
+  @apply hidden;
 }
 
-.modal-shadow {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
+.modal-shadow,
+.history-modal-warning {
+  @apply hidden absolute w-full h-full bg-black bg-opacity-65;
 }
 
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.modal,
+.history-modal {
+  /* @apply absolute top-1/2 left-1/2 transform translate-x-1/2 translate-y-1/2 w-[600px] h-[360px]
+  py-8 px-16 rounded-2xl bg-[#202020] text-white; */
+  @apply absolute top-1/2 left-1/2 w-[600px] h-[360px] py-8 px-16 rounded-2xl bg-[#202020] text-white;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 360px;
-  padding: 30px 60px;
-  border-radius: 15px;
-  background-color: rgb(32, 32, 32);
-  color: #fff;
+}
+
+.close-warning-modal,
+.confirm-delete-history-btn,
+.clear-history {
+  @apply w-auto /* Nadpisujemy width na auto, aby przyciski dopasowały się do zawartości */;
 }
 
 .modal h3 {
-  margin-bottom: 20px;
-  font-size: 30px;
+  @apply mb-5 text-3xl;
 }
 
 .modal p {
-  margin-bottom: 10px;
-  margin-left: 20px;
-  font-size: 20px;
+  @apply mb-[10px] ml-5;
 }
 
 .modal i,
 .modal strong {
-  color: var(--first-color);
+  @apply text-[#fa1406];
 }
 
 .modal .close {
-  display: block;
+  @apply block w-[200px] bg-[#333] transition-colors duration-300;
   margin: 40px auto 0;
-  width: 200px;
-  background-color: #333;
-  transition: background-color 0.3s;
 }
 
 .modal .close:hover {
-  background-color: #111;
+  @apply bg-[#111];
 }
 
 .modal-animation {
@@ -186,25 +124,13 @@ button:focus {
 
 /* zmiana kolorów */
 .colors {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  position: absolute;
-  top: 100px;
-  right: -100px;
-  width: 64px;
-  height: 220px;
-  transition: transform 0.3s;
+  @apply flex flex-col justify-evenly items-center absolute top-[100px] right-[-100px]
+  w-16 h-[220px] transition-transform duration-300;
 }
 
 .color {
-  width: 40px;
-  height: 40px;
-  border: 1px solid black;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.5s, box-shadow 0.5s;
+  @apply w-10 h-10 border border-solid border-black rounded-full cursor-pointer
+  transition-colors transition-shadow duration-500;
 }
 
 .show-colors {
