@@ -5,8 +5,8 @@
 }
 
 :root {
-  --first-color: rgb(250, 20, 6);
-  --second-color: rgb(190, 210, 197);
+  --first-color: #fa1406;
+  --second-color: #bed2c5;
   --hover-color: rgb(209, 33, 24);
 }
 
@@ -54,7 +54,7 @@ body {
 }
 
 .info i:hover {
-  color: var(--first-color);
+  color: var(--hover-color);
 }
 
 h1 {
@@ -101,7 +101,7 @@ button {
 
 button:hover,
 button:focus {
-  background-color: var(--first-color);
+  background-color: var(--hover-color);
   outline: none;
 }
 
@@ -121,7 +121,8 @@ button:focus {
   display: none;
 }
 
-.modal-shadow {
+.modal-shadow,
+.history-modal-warning {
   display: none;
   position: absolute;
   width: 100%;
@@ -129,7 +130,8 @@ button:focus {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
-.modal {
+.modal,
+.history-modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -140,6 +142,12 @@ button:focus {
   border-radius: 15px;
   background-color: rgb(32, 32, 32);
   color: #fff;
+}
+
+.close-warning-modal,
+.confirm-delete-history-btn,
+.clear-history {
+  width: auto; /* Nadpisujemy width na auto, aby przyciski dopasowały się do zawartości */
 }
 
 .modal h3 {

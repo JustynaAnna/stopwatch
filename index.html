@@ -36,7 +36,7 @@
 
       <ul class="time-list"></ul>
 
-      <button class="clear-history">clear history</button>
+      <button class="clear-history">delete history</button>
     </div>
     <div class="modal-shadow">
       <div class="modal">
@@ -44,14 +44,20 @@
         <p><i class="fas fa-play"></i> - start</p>
         <p><i class="fas fa-pause"></i> - pauze</p>
         <p><i class="fas fa-stop"></i> - stop</p>
-        <p>
-          <i class="fas fa-times"></i> - delete everything. Note: Deletes
-          history.
-        </p>
+        <p><i class="fas fa-times"></i> - delete everything.</p>
         <p><strong>HISTORY </strong>- see previous measurements</p>
         <button class="close">Close</button>
       </div>
     </div>
+
+    <div class="history-modal-warning">
+      <div class="history-modal">
+        <p>Are you sure you want to delete history? Note: Cannot be undone.</p>
+        <button class="close-warning-modal">Close</button>
+        <button class="confirm-delete-history-btn">Delete</button>
+      </div>
+    </div>
+
     <script type="module" defer src="js/app.js"></script>
   </body>
 </html>

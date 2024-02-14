@@ -1,3 +1,4 @@
+import { showWarningModal } from "../utils/modal.js";
 import { clearHistoryBtn } from "./buttonsModule.js";
 import { timeList } from "./stopwatchModule.js";
 
@@ -36,4 +37,5 @@ export const handleClearHistory = () => {
   timesArray = []; //Ustawiam na pustą tablicę inaczej po uruchomieniu stopera i kliknieciu na historie dalej mam stare zapisy
   // clearHistoryBtn.style.display = "none"; PRZEMYSL TO
   clearHistoryBtn.style.display = "none";
+  showWarningModal();
 };

@@ -12,8 +12,11 @@ import {
 } from "./modules/colorsModule.js";
 import {
   clearHistoryBtn,
+  closeHistoryWarningBtn,
   closeModalBtn,
+  closeWarning,
   historyBtn,
+  historyModalWarning,
   infoBtn,
   modalShadow,
   pauseBtn,
@@ -27,7 +30,7 @@ import {
   toggleHistoryVisibility,
 } from "./modules/history.js";
 
-import { showModal } from "./utils/modal.js";
+import { showModal, showWarningModal } from "./utils/modal.js";
 
 import {
   handlePause,
@@ -40,13 +43,19 @@ startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);
 resetBtn.addEventListener("click", handleReset);
+
 historyBtn.addEventListener("click", toggleHistoryVisibility);
-clearHistoryBtn.addEventListener("click", handleClearHistory);
+clearHistoryBtn.addEventListener("click", showWarningModal);
+closeHistoryWarningBtn.addEventListener("click", handleClearHistory);
+closeWarning.addEventListener("click", showWarningModal);
+
 infoBtn.addEventListener("click", showModal);
 closeModalBtn.addEventListener("click", showModal);
 window.addEventListener("click", (e) => {
   if (e.target === modalShadow) {
     showModal();
+  } else if (e.target === historyModalWarning) {
+    showWarningModal();
   }
 });
 
