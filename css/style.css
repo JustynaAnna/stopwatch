@@ -24,8 +24,8 @@ body {
   @apply right-16;
 }
 
-.info i {
-  @apply hover:text-[#fa1406];
+.info i:hover {
+  color: var(--first-color);
 }
 
 h1 {
@@ -52,7 +52,14 @@ button {
 }
 
 .history {
-  @apply flex-grow uppercase;
+  flex-grow: 1;
+  text-transform: uppercase;
+}
+
+button:hover,
+button:focus {
+  background-color: var(--first-color);
+  outline: none;
 }
 
 .time-list li {
@@ -67,16 +74,18 @@ button {
   @apply hidden;
 }
 
-.modal-shadow,
-.history-modal-warning {
-  @apply hidden absolute w-full h-full bg-black bg-opacity-65;
+.modal-shadow {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
-.modal,
-.history-modal {
-  /* @apply absolute top-1/2 left-1/2 transform translate-x-1/2 translate-y-1/2 w-[600px] h-[360px]
-  py-8 px-16 rounded-2xl bg-[#202020] text-white; */
-  @apply absolute top-1/2 left-1/2 w-[600px] h-[360px] py-8 px-16 rounded-2xl bg-[#202020] text-white;
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
@@ -84,6 +93,12 @@ button {
 .confirm-delete-history-btn,
 .clear-history {
   @apply w-auto /* Nadpisujemy width na auto, aby przyciski dopasowały się do zawartości */;
+}
+
+.close-warning-modal,
+.confirm-delete-history-btn,
+.clear-history {
+  width: auto; /* Nadpisujemy width na auto, aby przyciski dopasowały się do zawartości */
 }
 
 .modal h3 {
