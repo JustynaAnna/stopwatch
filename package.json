@@ -4,8 +4,8 @@
   "description": "",
   "main": "kopiaKodu.js",
   "scripts": {
-    "build": "tailwind build -i css/style.css -o public/tailwind.css",
-    "watch": "tailwind build -i css/style.css -o public/tailwind.css -w"
+    "build": "tailwind build -i css/main.css -o public/tailwind.css",
+    "watch": "tailwind build -i css/main.css -o public/tailwind.css -w"
   },
   "keywords": [],
   "author": "",
