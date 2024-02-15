@@ -709,8 +709,6 @@ button:focus {
 
 .modal,
 .history-modal {
-  /* @apply absolute top-1/2 left-1/2 transform translate-x-1/2 translate-y-1/2 w-[600px] h-[360px]
-  py-8 px-16 rounded-2xl bg-[#202020] text-white; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -743,12 +741,6 @@ button:focus {
 .modal p {
   margin-bottom: 10px;
   margin-left: 1.25rem;
-}
-
-.modal i,
-.modal strong {
-  --tw-text-opacity: 1;
-  color: rgb(250 20 6 / var(--tw-text-opacity));
 }
 
 .modal .close {
