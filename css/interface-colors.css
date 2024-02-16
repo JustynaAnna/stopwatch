@@ -1,3 +1,5 @@
+/* Settings for .colors and .color are in the main.css file */
+
 :root {
   --first-color: rgb(250, 20, 6);
   --second-color: rgb(190, 210, 197);
@@ -58,4 +60,10 @@ button:focus {
 .three:hover {
   background-color: rgb(28, 209, 58);
   box-shadow: 0 0 16px rgb(0, 255, 42);
+}
+
+@media screen and (max-width: 570px) {
+  .show-colors {
+    transform: translateX(-80px);
+  }
 }

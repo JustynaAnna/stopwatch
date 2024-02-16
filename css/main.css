@@ -7,13 +7,17 @@ body {
 }
 
 .wrapper {
-  @apply relative flex justify-center items-center flex-col p-[50px] w-[800px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-lg text-white overflow-hidden;
+  @apply relative flex justify-center items-center flex-col md:p-[50px] p-5 md:w-[800px] w-[90%] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-lg text-white overflow-hidden;
   background: radial-gradient(circle, rgb(43, 44, 46) 0%, rgb(25, 25, 25) 93%);
   box-shadow: 5px 5px 10px black;
 }
 
+.info {
+  @apply mb-6;
+}
+
 .info i {
-  @apply text-2xl absolute top-[0.375rem] p-[1.25rem] text-[#bed2c5] cursor-pointer transition-colors duration-300;
+  @apply sm:text-2xl absolute top-[0.375rem] p-[1.25rem] text-[#bed2c5] cursor-pointer transition-colors duration-300;
 }
 
 .info .fa-question {
@@ -29,11 +33,11 @@ body {
 }
 
 h1 {
-  @apply mb-5 text-6xl font-light;
+  @apply mb-5 md:text-6xl text-4xl font-light;
 }
 
 .stopwatch {
-  @apply text-7xl text-[#fa1406];
+  @apply md:text-7xl text-5xl text-[#fa1406];
 }
 /* .time {
   visibility: hidden;  */
@@ -56,7 +60,7 @@ button {
 }
 
 .time-list li {
-  @apply flex justify-between w-[300px] text-2xl text-[#bed2c5];
+  @apply flex justify-evenly w-[300px] text-2xl text-[#bed2c5];
 }
 
 .time-list span {
@@ -74,7 +78,7 @@ button {
 
 .modal,
 .history-modal {
-  @apply absolute top-1/2 left-1/2 w-[600px] h-[360px] py-8 px-16 rounded-2xl bg-[#202020] text-white;
+  @apply absolute top-1/2 left-1/2 sm:w-[600px] w-[90%] sm:h-[360px] h-auto py-8 px-16 rounded-2xl bg-[#202020] text-white;
   transform: translate(-50%, -50%);
 }
 
@@ -124,4 +128,29 @@ button {
 .color {
   @apply w-10 h-10 border border-solid border-black rounded-full cursor-pointer
   transition-colors transition-shadow duration-500;
+}
+@media screen and (max-width: 570px) {
+  .stopwatch {
+    @apply text-2xl;
+  }
+
+  button {
+    @apply w-[45%] m-0 mb-3; /* Pełna szerokość i margines na dole dla przycisków na ekranach o szerokości 450px lub mniej */
+  }
+
+  .modal {
+    padding: 20px;
+  }
+
+  .color {
+    @apply w-7 h-7;
+  }
+
+  .close-warning-modal,
+  .confirm-delete-history-btn {
+    @apply w-4/5;
+  }
+  .close-warning-modal {
+    @apply mt-3;
+  }
 }
