@@ -8,25 +8,6 @@ import { stopwatch, time } from "../modules/stopwatchModule.js";
 let countTime;
 let counter = 0;
 
-// Functions handling stopwatch operations.
-// Updates the stopwatch display.
-
-// tę funkcję updateStopwatchDisplay powinnaś rozbić na mniejsze funkcje; Większa elastyczność to pozwoli wykorzystać funkcje na nowo
-// const updateStopwatchDisplay = (counter) => {
-//   const hours = Math.floor(counter / 3600);
-//   const minutes = Math.floor((counter % 3600) / 60);
-//   const seconds = counter % 60;
-
-//   const formattedHours = String(hours).padStart(2, "0");
-//   const formattedMinutes = String(minutes).padStart(2, "0");
-//   const formattedSeconds = String(seconds).padStart(2, "0");
-
-//   const formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-//   stopwatch.textContent = formattedTime;
-// };
-
-//Zmieniony kod z updateStopwatchDisplay
-
 // Function to format individual time components (hours, minutes, seconds) with leading zeros if needed.
 const formatTimeComponent = (timeComponent) => {
   return String(timeComponent).padStart(2, "0");
