@@ -860,7 +860,8 @@ button:focus {
     margin: 0px;
     margin-bottom: 0.75rem;
     width: 45%;
-    /* Pełna szerokość i margines na dole dla przycisków na ekranach o szerokości 450px lub mniej */
+    /* Pełna szerokość i margines na dole dla przycisków na ekranach o 
+    szerokości 450px lub mniej */
   }
 
   .modal {

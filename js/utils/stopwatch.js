@@ -71,6 +71,9 @@ export const handleStop = () => {
   if (isHistoryVisible) {
     showHistory();
   }
+
+  // Save the updated timesArray to localStorage
+  localStorage.setItem("timesArray", JSON.stringify(timesArray));
 };
 
 export const handleReset = () => {

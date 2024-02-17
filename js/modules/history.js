@@ -16,6 +16,26 @@ export const showHistory = () => {
   });
 };
 
+//Nowe funkcje do localStorage:
+export const clearHistory = () => {
+  timesArray = [];
+  localStorage.removeItem("timesArray");
+};
+
+export const updateHistory = (newTime) => {
+  timesArray.push(newTime);
+  localStorage.setItem("timesArray", JSON.stringify(timesArray));
+};
+
+export const initializeHistory = () => {
+  const storedTimesArray = localStorage.getItem("timesArray");
+  if (storedTimesArray) {
+    timesArray = JSON.parse(storedTimesArray);
+  }
+};
+
+//koniec
+
 export const hideHistory = () => {
   timeList.textContent = "";
   clearHistoryBtn.style.display = "none";
