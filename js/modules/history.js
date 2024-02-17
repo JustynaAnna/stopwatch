@@ -1,5 +1,5 @@
 import { showWarningModal } from "../utils/modal.js";
-import { clearHistoryBtn } from "./buttonsModule.js";
+import { clearHistoryBtn } from "./domElementsModule.js";
 import { timeList } from "./stopwatchModule.js";
 
 export let timesArray = [];

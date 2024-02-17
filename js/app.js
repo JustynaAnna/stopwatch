@@ -23,7 +23,7 @@ import {
   resetBtn,
   startBtn,
   stopBtn,
-} from "./modules/buttonsModule.js";
+} from "./modules/domElementsModule.js";
 
 import {
   handleClearHistory,

@@ -39,9 +39,6 @@ h1 {
 .stopwatch {
   @apply md:text-7xl text-5xl text-[#fa1406];
 }
-/* .time {
-  visibility: hidden;  */
-/* DLA JS JAK TIME NIE BEDZIE DZIAŁAŁO SPRAWDZ CZY TOGGLE DZIAŁA Z  tilwind invisible*/
 
 .time {
   @apply invisible text-[#bed2c5] text-[22px];
@@ -52,7 +49,10 @@ h1 {
 }
 
 button {
-  @apply m-3 py-3 px-6 w-1/5 text-white text-2xl bg-transparent border border-solid border-red-600 rounded-md cursor-pointer transition-colors duration-300 hover:bg-red-600 focus:bg-red-600 focus:outline-none hover:outline-none;
+  @apply m-3 py-3 px-6 w-1/5 text-white text-2xl bg-transparent border 
+  border-solid border-red-600 rounded-md cursor-pointer 
+  transition-colors duration-300 hover:bg-red-600 focus:bg-red-600 
+  focus:outline-none hover:outline-none;
 }
 
 .history {
@@ -121,8 +121,8 @@ button {
 
 /* zmiana kolorów */
 .colors {
-  @apply flex flex-col justify-evenly items-center absolute top-[100px] right-[-100px]
-  w-16 h-[220px] transition-transform duration-300;
+  @apply flex flex-col justify-evenly items-center absolute top-[100px] 
+  right-[-100px] w-16 h-[220px] transition-transform duration-300;
 }
 
 .color {
