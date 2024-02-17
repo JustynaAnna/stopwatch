@@ -1,5 +1,5 @@
 import { showWarningModal } from "../utils/modal.js";
-import { clearHistoryBtn } from "./buttonsModule.js";
+import { clearHistoryBtn } from "./domElementsModule.js";
 import { timeList } from "./stopwatchModule.js";
 
 export let timesArray = [];
@@ -15,26 +15,6 @@ export const showHistory = () => {
     timeList.appendChild(newTime);
   });
 };
-
-//Nowe funkcje do localStorage:
-export const clearHistory = () => {
-  timesArray = [];
-  localStorage.removeItem("timesArray");
-};
-
-export const updateHistory = (newTime) => {
-  timesArray.push(newTime);
-  localStorage.setItem("timesArray", JSON.stringify(timesArray));
-};
-
-export const initializeHistory = () => {
-  const storedTimesArray = localStorage.getItem("timesArray");
-  if (storedTimesArray) {
-    timesArray = JSON.parse(storedTimesArray);
-  }
-};
-
-//koniec
 
 export const hideHistory = () => {
   timeList.textContent = "";
@@ -55,7 +35,6 @@ export const toggleHistoryVisibility = () => {
 export const handleClearHistory = () => {
   timeList.textContent = "";
   timesArray = []; //Ustawiam na pustą tablicę inaczej po uruchomieniu stopera i kliknieciu na historie dalej mam stare zapisy
-  // clearHistoryBtn.style.display = "none"; PRZEMYSL TO
   clearHistoryBtn.style.display = "none";
   showWarningModal();
 };

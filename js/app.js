@@ -23,11 +23,10 @@ import {
   resetBtn,
   startBtn,
   stopBtn,
-} from "./modules/buttonsModule.js";
+} from "./modules/domElementsModule.js";
 
 import {
   handleClearHistory,
-  timesArray,
   toggleHistoryVisibility,
 } from "./modules/history.js";
 
@@ -49,16 +48,6 @@ historyBtn.addEventListener("click", toggleHistoryVisibility);
 clearHistoryBtn.addEventListener("click", showWarningModal);
 closeHistoryWarningBtn.addEventListener("click", handleClearHistory);
 closeWarning.addEventListener("click", showWarningModal);
-
-window.addEventListener("load", () => {
-  // Retrieve timesArray from localStorage
-  const storedTimesArray = localStorage.getItem("timesArray");
-
-  // If timesArray exists in localStorage, parse and set it
-  if (storedTimesArray) {
-    timesArray = JSON.parse(storedTimesArray);
-  }
-});
 
 infoBtn.addEventListener("click", showModal);
 closeModalBtn.addEventListener("click", showModal);
